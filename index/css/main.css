@@ -3,6 +3,7 @@ html,body,.container-fluid{
 }
 li{
 	list-style-type: none;
+	cursor: pointer;
 }
 .guidelist{
 	background-color: #DDDDDD;
