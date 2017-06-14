@@ -1,0 +1,77 @@
+; (function () {
+
+
+	'use strict';
+
+	// Placeholder 
+	var placeholderFunction = function () {
+		$('input, textarea').placeholder({ customClass: 'my-placeholder' });
+	}
+
+	// Placeholder 
+	var contentWayPoint = function () {
+		var i = 0;
+		$('.animate-box').waypoint(function (direction) {
+
+			if (direction === 'down' && !$(this.element).hasClass('animated-fast')) {
+
+				i++;
+
+				$(this.element).addClass('item-animate');
+				setTimeout(function () {
+
+					$('body .animate-box.item-animate').each(function (k) {
+						var el = $(this);
+						setTimeout(function () {
+							var effect = el.data('animate-effect');
+							if (effect === 'fadeIn') {
+								el.addClass('fadeIn animated-fast');
+							} else if (effect === 'fadeInLeft') {
+								el.addClass('fadeInLeft animated-fast');
+							} else if (effect === 'fadeInRight') {
+								el.addClass('fadeInRight animated-fast');
+							} else {
+								el.addClass('fadeInUp animated-fast');
+							}
+
+							el.removeClass('item-animate');
+						}, k * 200, 'easeInOutExpo');
+					});
+
+				}, 100);
+
+			}
+
+		}, { offset: '85%' });
+	};
+	// On load
+	$(function () {
+		placeholderFunction();
+		contentWayPoint();
+
+	});
+
+}());
+function checkUser() {
+	var username = document.getElementById("username").value;
+	var password = document.getElementById("password").value;
+	$.ajax({
+        url: "../apis/login",
+        async: false,
+        data: {
+            username: username,
+            password: md5(password)
+        }
+    }).then(function (data) {
+        data = JSON.parse(data)
+        var result=data.result;
+        if(result=='success'){
+			$.cookie('username',username,{path:'/'});
+			$.cookie('partyid',data.data,{path:'/'});
+			location.href='../'
+		}else{
+			alert('error')
+		}
+        
+    })
+}

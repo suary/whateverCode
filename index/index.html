@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>guide</title>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<!--<link href="http://apps.bdimg.com/libs/bootstrap/3.2.0/bootstrap-theme.min.css" rel="stylesheet">-->
+	<link href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<script src="http://apps.bdimg.com/libs/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script src="http://cdn.bootcss.com/blueimp-md5/1.1.0/js/md5.min.js"></script>
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+	<link href="css/main.css" rel="stylesheet">
+
+
+	</script>
+</head>
+
+<body>
+
+	<div class="container-fluid">
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-5" aria-expanded="false">
+          </button>
+          <a class="navbar-brand" href="#">我也不知道这个站要干什么用</a>
+        </div>
+			<div class="dropdown fr mr20 mt10">
+				<button id="loginman" class="btn btn-defult" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  				</button>
+				<ul class="dropdown-menu" aria-labelledby="dLabel">
+					<li><a onclick="return quitlogin();">退出登录</a></li>
+					<li><a id="self" href="">个人中心</a></li>
+				</ul>
+			</div>
+		</nav>
+		<div class="row fht mt50">
+			<div class="col-md-2 p0 fht">
+				<ul class="guidelist">
+					<li>
+						<button class="btn btn-default">111</button>
+					</li>
+					<li>
+						<button class="btn btn-default">222</button>
+					</li>
+					<li>
+						<button class="btn btn-default">333</button>
+					</li>
+				</ul>
+			</div>
+			<div class="col-md-10 p0 fht mt10">
+				<div class="ofh">
+					<div class="col-md-4">
+						<span>关键字</span>
+						<input id="keyword" type="text">
+					</div>
+
+					<div class="col-md-4">
+						<button id="fetch">搜索</button>
+					</div>
+				</div>
+				<div id="router">
+
+				</div>
+				<div class="ofh">
+					<div class="col-md-4">
+						<span>id:</span>
+						<input id="id" type="text">
+					</div>
+					<div class="col-md-4">
+						<span>text:</span>
+						<input id="text" type="text">
+					</div>
+					<div class="col-md-4">
+						<button id="submit2">提交</button>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<ul class="pagination fr">
+						<li>
+							<a aria-label="Previous">
+        						<span aria-hidden="true">&laquo;</span>
+      						</a>
+						</li>
+						<li><a>1</a></li>
+						<li><a>2</a></li>
+						<li><a>3</a></li>
+						<li><a>4</a></li>
+						<li><a>5</a></li>
+						<li>
+							<a aria-label="Next">
+        						<span aria-hidden="true">&raquo;</span>
+      						</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<script type="text/javascript" src="js/main.js"></script>
+</body>
+
+</html>
