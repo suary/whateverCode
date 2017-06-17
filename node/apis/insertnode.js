@@ -33,7 +33,7 @@ var connection = mysql.createConnection({
 var add=function(){
   return 3
 }
-const server = function(req, res) {
+const server = function(req, res,connection) {
   
   var arg = URL.parse(req.url, true).query;  
   console.log(arg)

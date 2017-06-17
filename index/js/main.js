@@ -5,7 +5,10 @@ function quitlogin(){
     location.href='/login'
 }
 var skipcount = 0;
-function selectuserinfo(){
+function gotocenter(){
+    $("#userinfo").show();
+    $(".miantext").hide();
+
     $.ajax({
         url: "apis/selectuserinfo",
         async: false,
@@ -15,9 +18,22 @@ function selectuserinfo(){
     }).then(function (data) {
         data = JSON.parse(data)
         data=data.data;
+        console.log(data)
+        var templeteuserinfo=''
+        templeteuserinfo+='<h1>'+data.username+'的个人中心</h1>'
+        templeteuserinfo+='<h4>性别：'+(data.sex=='man'?'男':'女')+'</h4>'
+        templeteuserinfo+='<h4>个人宣言：'+data.slogun+'</h4>'
+        templeteuserinfo+='<h4>所在地：'+data.province+'省'+data.city+'市'+'</h4>'
+        templeteuserinfo+='<h4 onclick="return returntomian()">返回主页</h4>'
+
+        $("#userinfo").html(templeteuserinfo)
         
         
     })
+}
+function returntomian(){
+    $("#userinfo").hide();
+    $(".miantext").show();
 }
 function newdata() {
     $.ajax({
@@ -90,12 +106,10 @@ function submit22() {
 $("#submit2").on('click', function () {
     submit22()
 });
-
 if((!$.cookie('username'))||$.cookie('username')=='null'){
 			location.href='/login'
 }else{
     $("#loginman").html($.cookie('username')+'<span class="caret"></span>')
     $("#self").attr('href','/partycenter/?id='+$.cookie('partyid'))
     newdata()
-    selectuserinfo()
 }

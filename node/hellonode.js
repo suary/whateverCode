@@ -9,7 +9,7 @@ api.list = require('./apis/fetchlist.js');
 //database
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
-  host     : '192.168.0.104',
+  host     : '192.168.8.12',
   user     : 'root',
   password : '',
   database : 'suary'
@@ -35,7 +35,7 @@ connection.connect(function(err) {
 const server = http.createServer((req, res) => {
     var path=URL.parse(req.url, true).pathname
     var deal= require('.'+path+'.js');
-deal.server(req, res)
+deal.server(req, res ,connection)
   
   
   
