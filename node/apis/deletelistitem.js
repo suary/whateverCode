@@ -5,13 +5,13 @@ const URL = require('url');
 const server = function(req, res , connection) {
   var arg = URL.parse(req.url, true).query;
   res.statusCode = 200;
-  var querystr='SELECT * FROM `userinfo` WHERE `partyid` = ?'
+  var querystr='UPDATE `userinfo` SET `isactive` = 0 WHERE `id` = ? and `text`=?'
   var data={}
-  connection.query(querystr,[arg.partyid], function (error, results, fields) {
+  connection.query(querystr,[arg.id,arg.text], function (error, results, fields) {
     
     if(results.length){
         data.results='success'
-        data.data=results[0];
+        data.data=results;
     }else{
         data.results='error'
         data.data='';

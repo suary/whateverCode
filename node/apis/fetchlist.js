@@ -2,13 +2,6 @@ const http = require('http');
 const URL = require('url');
 
 //database
-var mysql      = require('mysql');
-var connection = mysql.createConnection({
-  host     : '192.168.0.104',
-  user     : 'root',
-  password : '',
-  database : 'suary'
-});
 
 var add=function(){
   return 3

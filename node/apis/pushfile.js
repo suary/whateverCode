@@ -1,7 +1,21 @@
 const http = require('http');
 const URL = require('url');
 
-//database
+// connection.connect(function(err) {
+//   if (err) {
+//     console.error('error connecting: ' + err.stack);
+//     return;
+//   }
+//   console.log('connected as id ' + connection.threadId);
+// });
+
+// connection.end(function(err) {
+//   if (err) {
+//     console.error(err.stack);
+//     return;
+//   }
+//   console.log('stop success ' + connection.threadId);
+// });
 
 
 
