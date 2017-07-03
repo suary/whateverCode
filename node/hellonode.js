@@ -9,7 +9,7 @@ api.list = require('./apis/fetchlist.js');
 //database
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
-  host     : '192.168.8.12',
+  host     : '192.168.0.103',
   user     : 'root',
   password : '',
   database : 'suary'
