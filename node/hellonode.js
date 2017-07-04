@@ -2,8 +2,6 @@ const http = require('http');
 const URL = require('url');
 const hostname = '127.0.0.1';
 const port = 3000;
-var api={}
-api.insert= require('./apis/insertnode.js');
 //database
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
