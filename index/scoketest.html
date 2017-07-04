@@ -14,10 +14,16 @@
 
 </head>
 <body>
-    <input name="server" value="chat" type="radio">chat
-    <input name="server" value="news" type="radio">new<button id="sure">提交</button>
-<input type="text" id="yourname" placeholder="你的名字">
-<input type="text" id="input"><button id="submit">提交</button>
+    <div id="phase1">
+        <input name="server" value="chat" type="radio">chat
+        <input name="server" value="news" type="radio">new<button id="sure">提交</button>
+    </div>
+    <div id="phase2" style="display:none">
+        <input type="text" id="yourname" placeholder="你的名字">
+        <input type="text" id="input"><button id="submit">提交</button>
+    </div>
+    
+
 <div id="textarea"></div>
 </body>
 <script>
@@ -33,6 +39,8 @@
 $("#sure").on('click',function(){
       if($('input:radio:checked').val()){
         socket = io('http://localhost:880/'+$('input:radio:checked').val());
+        $("#phase1").css('display','none');
+        $("#phase2").css('display','')
         socket.on('new message', function (data) {
             console.log(data)
             $("#textarea").html($("#textarea").html()+data.name+':'+data.text+'<br>')
@@ -42,7 +50,6 @@ $("#sure").on('click',function(){
             beginway(data.usertype)
         });
       }
-      
 })
 function beginway(type){
     if(type=='whiteuser'){
