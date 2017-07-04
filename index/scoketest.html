@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>guide</title>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<!--<link href="http://apps.bdimg.com/libs/bootstrap/3.2.0/bootstrap-theme.min.css" rel="stylesheet">-->
+	<link href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<script src="http://apps.bdimg.com/libs/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script src="http://cdn.bootcss.com/blueimp-md5/1.1.0/js/md5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+
+
+</head>
+<body>
+    <input name="server" value="chat" type="radio">chat
+    <input name="server" value="news" type="radio">new<button id="sure">提交</button>
+<input type="text" id="yourname" placeholder="你的名字">
+<input type="text" id="input"><button id="submit">提交</button>
+<div id="textarea"></div>
+</body>
+<script>
+    var usermode=''
+    $("#submit").on('click',function(){
+        if (usermode=='whiteuser'||usermode=='blackuser') {
+            if($("#input").val()){
+                socket.emit('input event', { name:$("#yourname").val(),text: $("#input").val() });
+            }
+            
+        }
+    })
+$("#sure").on('click',function(){
+      if($('input:radio:checked').val()){
+        socket = io('http://localhost:880/'+$('input:radio:checked').val());
+        socket.on('new message', function (data) {
+            console.log(data)
+            $("#textarea").html($("#textarea").html()+data.name+':'+data.text+'<br>')
+        });
+        socket.on('userinfo', function (data) {
+            console.log(data)
+            beginway(data.usertype)
+        });
+      }
+      
+})
+function beginway(type){
+    if(type=='whiteuser'){
+        usermode='fst'
+        waitmove=true
+    }else if(type='blackuser'){
+        usermode='sec'
+        waitmove=false
+    }else{
+        usertype='none'
+    }
+}
+
+
+</script>
+</html>
