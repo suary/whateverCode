@@ -4,12 +4,10 @@ const hostname = '127.0.0.1';
 const port = 3000;
 var api={}
 api.insert= require('./apis/insertnode.js');
-api.list = require('./apis/fetchlist.js');
-
 //database
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
-  host     : '192.168.0.101',
+  host     : '192.168.0.103',
   user     : 'root',
   password : '',
   database : 'suary'
@@ -35,10 +33,7 @@ connection.connect(function(err) {
 const server = http.createServer((req, res) => {
     var path=URL.parse(req.url, true).pathname
     var deal= require('.'+path+'.js');
-deal.server(req, res ,connection)
-  
-  
-  
+    deal.server(req, res ,connection);
 });
 server.listen(port, hostname, () => {
   console.log(`服务器运行在 http://${hostname}:${port}/`);
