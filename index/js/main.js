@@ -8,7 +8,6 @@ var skipcount = 0;
 function gotocenter(){
     $("#userinfo").show();
     $(".miantext").hide();
-
     $.ajax({
         url: "apis/selectuserinfo",
         async: false,
