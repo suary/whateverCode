@@ -23,7 +23,7 @@
 <script>
     var usermode=''
     $("#submit").on('click',function(){
-        if (usermode=='whiteuser'||usermode=='blackuser') {
+        if (usermode=='fst'||usermode=='sec') {
             if($("#input").val()){
                 socket.emit('input event', { name:$("#yourname").val(),text: $("#input").val() });
             }
@@ -32,7 +32,7 @@
     })
 $("#sure").on('click',function(){
       if($('input:radio:checked').val()){
-        socket = io('http://localhost:880/'+$('input:radio:checked').val());
+        socket = io(location.host+':880/'+$('input:radio:checked').val());
         socket.on('new message', function (data) {
             console.log(data)
             $("#textarea").html($("#textarea").html()+data.name+':'+data.text+'<br>')
